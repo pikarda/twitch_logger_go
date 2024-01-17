@@ -1,0 +1,4 @@
+.env
+twitch_logger
+twitch_logger_go.code-workspace
+twitch_logger.exe
