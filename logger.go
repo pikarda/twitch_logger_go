@@ -13,9 +13,6 @@ var listOfChannels []string
 // func Logger(data *NotionData) {
 func Logger() {
 	setVariables(Data)
-	for i := range UserList {
-		listOfChannels = append(listOfChannels, i)
-	}
 	client := twitch.NewAnonymousClient()
 
 	client.OnPrivateMessage(func(message twitch.PrivateMessage) {

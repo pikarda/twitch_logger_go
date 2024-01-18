@@ -19,6 +19,8 @@ func loop(client *twitch.Client) {
 					client.Depart(v)
 					fmt.Printf("Channel departed %s \n", v)
 				}
+				listOfChannels = []string{}
+				UserList = map[string][]string{}
 				GetNotionData()
 				setVariables(Data)
 				client.Join(listOfChannels...)

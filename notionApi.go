@@ -209,6 +209,9 @@ func setVariables(data *NotionData) {
 			}
 		}
 	}
+	for i := range UserList {
+		listOfChannels = append(listOfChannels, i)
+	}
 }
 
 func GetReloadStatus() {
