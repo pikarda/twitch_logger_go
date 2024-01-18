@@ -51,6 +51,27 @@ type NotionData struct {
 		} `json:"parent"`
 		Archived   bool `json:"archived"`
 		Properties struct {
+			Color struct {
+				ID       string `json:"id"`
+				Type     string `json:"type"`
+				RichText []struct {
+					Type string `json:"type"`
+					Text struct {
+						Content string `json:"content"`
+						Link    any    `json:"link"`
+					} `json:"text"`
+					Annotations struct {
+						Bold          bool   `json:"bold"`
+						Italic        bool   `json:"italic"`
+						Strikethrough bool   `json:"strikethrough"`
+						Underline     bool   `json:"underline"`
+						Code          bool   `json:"code"`
+						Color         string `json:"color"`
+					} `json:"annotations"`
+					PlainText string `json:"plain_text"`
+					Href      any    `json:"href"`
+				} `json:"rich_text"`
+			} `json:"color"`
 			Value struct {
 				ID       string `json:"id"`
 				Type     string `json:"type"`
@@ -117,7 +138,7 @@ type NotionData struct {
 var Token string
 var ClientId string
 
-var UserList = make(map[string]string)
+var UserList = make(map[string][]string)
 
 var BlackList []string
 
@@ -173,7 +194,11 @@ func setVariables(data *NotionData) {
 		}
 
 		if v.Properties.Tag.Select.Name == "user" {
-			UserList[v.Properties.Name.Title[0].Text.Content] = v.Properties.Value.RichText[0].Text.Content
+			if len(v.Properties.Color.RichText) > 0 {
+				UserList[v.Properties.Name.Title[0].Text.Content] = []string{v.Properties.Value.RichText[0].Text.Content, v.Properties.Color.RichText[0].Text.Content}
+			} else {
+				UserList[v.Properties.Name.Title[0].Text.Content] = []string{v.Properties.Value.RichText[0].Text.Content, "#AD8E77"}
+			}
 		}
 
 		if v.Properties.Tag.Select.Name == "blacklist" {

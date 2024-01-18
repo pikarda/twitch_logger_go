@@ -6,7 +6,7 @@ import (
 
 func main() {
 
-	fmt.Println("APP STARTED")
+	fmt.Println(styledStartApp("APP STARTED"))
 	GetReloadStatus()
 	// data := GetNotionData()
 	GetNotionData()

@@ -24,8 +24,9 @@ func Logger() {
 		if slices.Contains(BlackList, strings.ToLower(message.User.Name)) {
 			return
 		}
-
-		text := fmt.Sprint("#", message.Channel, "- ", message.User.Name, ": ", message.Message)
+		streamer := styledText(UserList[message.Channel][1], message.Channel)
+		chatter := styledUser(message.User.Name)
+		text := fmt.Sprint(streamer, " ", chatter, ": ", message.Message)
 		fmt.Println(text)
 		pic, err := GetAvatar(message.User.ID)
 		if err != nil {
@@ -39,13 +40,16 @@ func Logger() {
 
 	client.Join(listOfChannels...)
 
-	client.OnConnect(printChannels)
+	client.OnConnect(func() {
+		printChannels()
+		go shutdown(client)
+	})
 
 	go loop(client)
 
 	err := client.Connect()
 	if err != nil {
-		panic(err)
+		fmt.Println(styledStartApp("APP TERMINATED"))
 	}
 
 }
@@ -53,7 +57,8 @@ func Logger() {
 func printChannels() {
 	var stringUsers string
 	for i := range UserList {
-		stringUsers = fmt.Sprintf("%s%s%s", stringUsers, i, ", ")
+		streamer := styledText(UserList[i][1], i)
+		stringUsers = fmt.Sprintf("%s%s%s", stringUsers, streamer, ", ")
 	}
-	fmt.Println("LOGGING CHANNELS: " + stringUsers)
+	fmt.Println("LOGGING CHANNELS: " + stringUsers + "\n\n")
 }
