@@ -55,3 +55,8 @@ Periodicaly app wil check value of "**reload**" row. If it's equals 0 then app w
 So if you want change something - do it and then put 1 in reload value.
 
 Or add notion button that will do it for you.
+
+---
+
+![logger](https://github.com/pikarda/twitch_logger_go/assets/25252682/1fa76b0d-8c5c-4222-9c22-5c3f2bb6fc79)
+
