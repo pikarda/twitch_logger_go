@@ -10,8 +10,8 @@ import (
 
 var listOfChannels []string
 
-// func Logger(data *NotionData) {
 func Logger() {
+
 	setVariables(Data)
 	client := twitch.NewAnonymousClient()
 
@@ -51,11 +51,13 @@ func Logger() {
 
 }
 
+// Print a string with the streamers whose chat is currently being monitored
 func printChannels() {
 	var stringUsers string
 	for i := range UserList {
 		streamer := styledText(UserList[i][1], i)
 		stringUsers = fmt.Sprintf("%s%s%s", stringUsers, streamer, ", ")
 	}
+	stringUsers = stringUsers[:len(stringUsers)-2]
 	fmt.Println("LOGGING CHANNELS: " + stringUsers + "\n\n")
 }

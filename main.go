@@ -4,9 +4,11 @@ import (
 	"fmt"
 )
 
-func main() {
+var uselocalConfig bool
 
+func main() {
 	fmt.Println(styledStartApp("APP STARTED"))
+
 	GetReloadStatus()
 
 	GetNotionData()

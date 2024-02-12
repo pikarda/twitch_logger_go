@@ -9,6 +9,7 @@ import (
 
 var ticker = time.NewTicker(5 * time.Minute)
 
+// function that tracks if app needs to reload list of streamers (if value of reload == 1)
 func loop(client *twitch.Client) {
 	for {
 		select {

@@ -17,7 +17,7 @@ import (
 //go:embed .env
 var env []byte
 
-// getting all secrets from .env file and put in map
+// getting all secrets from .env file and put in map.
 func getEnv() map[string]string {
 	envs, err := godotenv.Unmarshal(string(env))
 
@@ -139,7 +139,6 @@ var Token string
 var ClientId string
 
 var UserList = make(map[string][]string)
-
 var BlackList []string
 
 var ReloadStatus bool
@@ -179,7 +178,6 @@ func GetNotionData() {
 		log.Fatal(err)
 	}
 	Data = data
-	// return data
 }
 
 func setVariables(data *NotionData) {
@@ -214,6 +212,8 @@ func setVariables(data *NotionData) {
 	}
 }
 
+// get reload value from notion database.
+// if value equals 1 then list of streamers will be refetched.
 func GetReloadStatus() {
 	envs := getEnv()
 	var data *NotionData

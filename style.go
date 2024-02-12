@@ -2,6 +2,7 @@ package main
 
 import "github.com/charmbracelet/lipgloss"
 
+// add some colors to streamer username when logging (in console)
 func styledText(color string, prompt string) string {
 	text := lipgloss.NewStyle().
 		Bold(true).
@@ -11,6 +12,7 @@ func styledText(color string, prompt string) string {
 	return text.Render(prompt)
 }
 
+// add boldness to chatter username when logging (in console)
 func styledUser(prompt string) string {
 	text := lipgloss.NewStyle().
 		Bold(true)
@@ -18,6 +20,7 @@ func styledUser(prompt string) string {
 	return text.Render(prompt)
 }
 
+// styling of text that pops when app started (in console)
 func styledStartApp(prompt string) string {
 	text := lipgloss.NewStyle().
 		Width(50).
