@@ -255,7 +255,7 @@ func GetReloadStatus() {
 
 // set reload status to 0 (zero)
 func UpdateDatabaseReloadStatus() error {
-
+	envs := getEnv()
 	url := fmt.Sprint("https://api.notion.com/v1/pages/" + ReloadPageID)
 
 	payload := strings.NewReader("{\n  \"properties\": {\n    \"value\": {\n      \"rich_text\": [\n        {\n          \"type\": \"text\",\n          \"text\": {\n            \"content\": \"0\"\n          }\n        }\n      ]\n    }\n  }\n}")
@@ -265,7 +265,7 @@ func UpdateDatabaseReloadStatus() error {
 		log.Fatal(err)
 	}
 	req.Header.Add("content-type", "application/json")
-	req.Header.Add("Authorization", "Bearer secret_KWwleNo3kCCAyFYe5wMWrhIFPmGe4BAvLr40h3XTWdp")
+	req.Header.Add("Authorization", fmt.Sprint("Bearer "+envs["NOTION_TOKEN"]))
 	req.Header.Add("Notion-Version", "2022-06-28")
 
 	res, err := http.DefaultClient.Do(req)
