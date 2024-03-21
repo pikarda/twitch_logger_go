@@ -3,10 +3,13 @@ module twitch_logger
 go 1.21.4
 
 require (
+	github.com/charmbracelet/lipgloss v0.9.1
+	github.com/gempir/go-twitch-irc/v4 v4.0.0
+	github.com/joho/godotenv v1.5.1
+)
+
+require (
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
-	github.com/charmbracelet/lipgloss v0.9.1 // indirect
-	github.com/gempir/go-twitch-irc/v4 v4.0.0 // indirect
-	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mattn/go-isatty v0.0.18 // indirect
 	github.com/mattn/go-runewidth v0.0.15 // indirect

@@ -38,9 +38,7 @@ func GetAvatar(id string) (string, error) {
 
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
-		if err != nil {
-			return "", errors.New("error doing request")
-		}
+		return "", errors.New("error doing request")
 	}
 
 	defer res.Body.Close()

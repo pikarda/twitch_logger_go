@@ -11,11 +11,8 @@ import (
 var disconnect = make(chan os.Signal, 1)
 
 func shutdown(client *twitch.Client) {
-	signal.Notify(disconnect, os.Interrupt, os.Kill, syscall.SIGKILL, syscall.SIGTERM)
-	for {
-		select {
-		case <-disconnect:
-			client.Disconnect()
-		}
+	signal.Notify(disconnect, os.Interrupt, syscall.SIGTERM)
+	for range disconnect {
+		client.Disconnect()
 	}
 }

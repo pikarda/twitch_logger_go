@@ -275,7 +275,7 @@ func UpdateDatabaseReloadStatus() error {
 	defer res.Body.Close()
 
 	if res.StatusCode != 200 {
-		return errors.New("Update reload status in DB ERROR")
+		return errors.New("update reload status in db error")
 	}
 	ReloadStatus = false
 	return nil
