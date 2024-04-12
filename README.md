@@ -50,7 +50,7 @@ You can use your own user secrets or register twitch developer app here https://
 
 ---
 
-Periodicaly app wil check value of "**reload**" row. If it's equals 0 then app will refetch data from database and update streamer list.
+Periodicaly app wil check value of "**reload**" row. If it's equals 1 then app will refetch data from database and update streamer list.
 
 So if you want change something - do it and then put 1 in reload value.
 
